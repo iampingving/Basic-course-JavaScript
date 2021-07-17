@@ -134,3 +134,60 @@ function power(val, pow) {
     if (pow === 1) return val;
     else return val * power(val, --pow);
 }
+
+function outputSimpleNumbers() {
+    let number = 0,
+        isSimple = true,
+        strOut = '';
+    while (number != 101) {
+        if (number > 1) //потому что 0 и 1 не являются простыми числами
+        {
+            for (let i = 2; i < number; i++)
+                if (number % i === 0)
+                    isSimple = false;
+            if (isSimple)
+                strOut += number + ' ';
+            isSimple = true;
+        }
+        number++;
+    }
+    alert(strOut);
+}
+
+function goodsInBasket() {
+    let basket = [
+        ['Футболка', 6, 999],
+        ['Шорты', 2, 1199],
+        ['Юбка', 2, 1599],
+        ['Носки', 5, 149],
+        ['Джинсы', 2, 2199]
+    ]
+    alert("В корзине:\nТовар,Кол-во,Цена\n" + basket[0] + "\n" + basket[1] + "\n" + basket[2] + "\n" + basket[3] + "\n" + basket[4] + "\n" + "\nИтого: " + countBasketPrice(basket));
+}
+
+function countBasketPrice(basket) {
+    let sum = 0;
+    for (let i = 0; i < basket.length; i++) {
+        sum += basket[i][1] * basket[i][2];
+    }
+    return sum;
+}
+
+function outputNumber() {
+    for (let i = 0, str = ''; i <= 9; str += i + ' ', i++, i == 10 ? alert(str) : true) {}
+    //не совсем понятно из формулировки задания, поэтому вариант 2
+    for (let i = 0; i <= 9; console.log(i), i++) {}
+}
+
+function pyramid() {
+    let strOut = '';
+    for (let i = 0; i < 20; i++) {
+        strOut += 'x';
+        console.log(strOut);
+    }
+    //не совсем понятно из формулировки задания, поэтому вариант 2
+    strOut = 'x';
+    for (let i = 1; i < 20; i++)
+        strOut += "\n" + strOut.slice(-i) + 'x';
+    console.log(strOut);
+}

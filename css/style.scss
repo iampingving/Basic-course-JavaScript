@@ -11,19 +11,32 @@ $color: #0951d6;
     color: $color;
 }
 
-.h1-header {
-    text-align: center;
-    text-transform: uppercase;
-    margin: 20px auto;
-}
+
 
 .container {
     display: grid;
-    grid-template-areas: "block-1 dom-1 dom-1"
+    grid-template-areas: ". . header"
+        "block-1 dom-1 dom-1"
         "block-2 dom-1 dom-1"
         "block-3 dom-1 dom-1";
+    grid-template-columns: 1fr 1fr fit-content(30%);
     max-width: 1140px;
     margin: 0 auto;
+
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    grid-area: header;
+    background-color: #0951d6;
+    padding: 10px 30px;
+    margin-bottom: 20px;
+
+    & h1 {
+        color: white;
+        text-transform: uppercase;
+    }
 }
 
 .btn {
@@ -48,7 +61,7 @@ $color: #0951d6;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;    
+    width: 100%;
 
     &-1 {
         grid-area: block-1;

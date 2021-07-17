@@ -51,6 +51,8 @@ $color: #0951d6;
 
     &:hover {
         transform: scale(1.1);
+        background-color: $color;
+        color: white;
     }
 
 }

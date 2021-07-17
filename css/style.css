@@ -54,6 +54,8 @@
 .btn:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+  background-color: #0951d6;
+  color: white;
 }
 
 .block {

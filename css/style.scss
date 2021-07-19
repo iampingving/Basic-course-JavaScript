@@ -18,7 +18,8 @@ $color: #0951d6;
     grid-template-areas: ". . header"
         "block-1 dom-1 dom-1"
         "block-2 dom-1 dom-1"
-        "block-3 dom-1 dom-1";
+        "block-3 dom-1 dom-1"
+        "block-4 dom-1 dom-1";
     grid-template-columns: 1fr 1fr fit-content(30%);
     max-width: 1140px;
     margin: 0 auto;
@@ -75,6 +76,10 @@ $color: #0951d6;
 
     &-3 {
         grid-area: block-3;
+    }
+
+    &-4 {
+        grid-area: block-4;
     }
 
     &-dom {

@@ -191,3 +191,66 @@ function pyramid() {
         strOut += "\n" + strOut.slice(-i) + 'x';
     console.log(strOut);
 }
+
+function getObject(num) {
+    if (num > 999 || num < 0) {
+        console.log("Неверный формат числа");
+        return {}
+    } else
+        return {
+            ones: num % 10,
+            tens: ((num % 100) - (num % 100 % 10)) / 10,
+            hundreds: (num - (num % 100)) / 100
+        }
+}
+
+function divideNumber() {
+    let a = parseInt(prompt("Введите положительное число меньше 1000"));
+    let obj = getObject(a);
+    console.log(obj);
+}
+
+function goodsInBasketObj() {
+    let basket = {
+        item1: {
+            id: 1,
+            name: "Футболка",
+            amount: 6,
+            price: 999
+        },
+        item2: {
+            id: 2,
+            name: "Шорты",
+            amount: 2,
+            price: 1199
+        },
+        item3: {
+            id: 3,
+            name: "Юбка",
+            amount: 2,
+            price: 1599
+        },
+        item4: {
+            id: 4,
+            name: "Носки",
+            amount: 5,
+            price: 149
+        },
+        item5: {
+            id: 5,
+            name: "Джинсы",
+            amount: 2,
+            price: 2199
+        },
+
+        countSum() {
+            let summ = 0;
+            for (let item in this) {
+                if (this[item].price != undefined && this[item].amount != undefined)
+                    summ += this[item].amount * this[item].price;
+            }
+            return summ;
+        }
+    }
+    console.log(basket.countSum());
+}

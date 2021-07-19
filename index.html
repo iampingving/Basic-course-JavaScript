@@ -5,25 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>Basic JS</h1>
-    <h2>Lesson 1</h2>
-    <button onclick="celsiusToFahrenheit()">Задача 1</button>
-    <button onclick="variableTest()">Задача 2</button>
-    <button onclick="numberPlusString()">Задача 3</button>
-    <h2>Lesson 2</h2>
-    <button onclick="countTwoNumbers()">Задача 3</button>
-    <button onclick="outputRangeOfNumbers()">Задача 4</button>
-    <button onclick="easyCalc()">Задача 5 и 6</button>
-    <button onclick="toThePower()">Задача 8</button>
-    <h2>Lesson 3</h2>
-    <button onclick="outputSimpleNumbers()">Задача 1</button>
-    <button onclick="goodsInBasket()">Задача 2 и 3</button>
-    <button onclick="outputNumber()">Задача 4</button>
-    <button onclick="pyramid()">Задача 5</button>
+    <main>
+
+        <div class="container">
+            <div class="header">
+                <h1>Basic JS</h1>
+            </div>
+            <div class="block block-dom" id="block-dom">
+                Для DOM:)
+            </div>
+            <div class="block block-1">
+                <h2>Lesson 1</h2>
+                <div class="block__btn">
+                    <button class="btn" onclick="celsiusToFahrenheit()">Задача 1</button>
+                    <button class="btn" onclick="variableTest()">Задача 2</button>
+                    <button class="btn" onclick="numberPlusString()">Задача 3</button>
+                </div>
+            </div>
+            <div class="block block-2">
+                <h2>Lesson 2</h2>
+                <div class="block__btn">
+                    <button class="btn" onclick="countTwoNumbers()">Задача 3</button>
+                    <button class="btn" onclick="outputRangeOfNumbers()">Задача 4</button>
+                    <button class="btn" onclick="easyCalc()">Задача 5 и 6</button>
+                    <button class="btn" onclick="toThePower()">Задача 8</button>
+                </div>
+            </div>
+            <div class="block block-3">
+                <h2>Lesson 3</h2>
+                <div class="block__btn">
+                    <button class="btn" onclick="outputSimpleNumbers()">Задача 1</button>
+                    <button class="btn" onclick="goodsInBasket()">Задача 2 и 3</button>
+                    <button class="btn" onclick="outputNumber()">Задача 4</button>
+                    <button class="btn" onclick="pyramid()">Задача 5</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
 </body>
-<script src="script.js"></script>
+<script src="js/script.js"></script>
 
 </html>

@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&display=swap');
+
+$color: #0951d6;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    font-family: 'Comfortaa', cursive;
+    color: $color;
+}
+
+
+
+.container {
+    display: grid;
+    grid-template-areas: ". . header"
+        "block-1 dom-1 dom-1"
+        "block-2 dom-1 dom-1"
+        "block-3 dom-1 dom-1";
+    grid-template-columns: 1fr 1fr fit-content(30%);
+    max-width: 1140px;
+    margin: 0 auto;
+
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    grid-area: header;
+    background-color: #0951d6;
+    padding: 10px 30px;
+    margin-bottom: 20px;
+
+    & h1 {
+        color: white;
+        text-transform: uppercase;
+    }
+}
+
+.btn {
+    background: none;
+    border: 2px solid $color;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: 0.2s;
+    margin: 10px auto;
+    width: 70%;
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: $color;
+        color: white;
+    }
+
+}
+
+.block {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &-1 {
+        grid-area: block-1;
+    }
+
+    &-2 {
+        grid-area: block-2;
+    }
+
+    &-3 {
+        grid-area: block-3;
+    }
+
+    &-dom {
+        grid-area: dom-1;
+        border-left: 3px solid $color;
+    }
+
+    &__btn {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}

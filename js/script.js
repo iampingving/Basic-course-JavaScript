@@ -211,46 +211,45 @@ function divideNumber() {
 }
 
 function goodsInBasketObj() {
-    let basket = {
-        item1: {
-            id: 1,
-            name: "Футболка",
-            amount: 6,
-            price: 999
-        },
-        item2: {
-            id: 2,
-            name: "Шорты",
-            amount: 2,
-            price: 1199
-        },
-        item3: {
-            id: 3,
-            name: "Юбка",
-            amount: 2,
-            price: 1599
-        },
-        item4: {
-            id: 4,
-            name: "Носки",
-            amount: 5,
-            price: 149
-        },
-        item5: {
-            id: 5,
-            name: "Джинсы",
-            amount: 2,
-            price: 2199
-        },
+    const basket = {
+        items: [{
+                id: 1,
+                name: "Футболка",
+                amount: 6,
+                price: 999
+            },
+            {
+                id: 2,
+                name: "Шорты",
+                amount: 2,
+                price: 1199
+            },
+            {
+                id: 3,
+                name: "Юбка",
+                amount: 2,
+                price: 1599
+            }, {
+                id: 4,
+                name: "Носки",
+                amount: 5,
+                price: 149
+            }, {
+                id: 5,
+                name: "Джинсы",
+                amount: 2,
+                price: 2199
+            }
+        ],
 
         countSum() {
             let summ = 0;
-            for (let item in this) {
-                if (this[item].price != undefined && this[item].amount != undefined)
-                    summ += this[item].amount * this[item].price;
+            for (let item in this.items) {                
+                summ += this.items[item].amount * this.items[item].price;
             }
             return summ;
         }
     }
-    console.log(basket.countSum());
+
+    alert(basket.countSum());
 }

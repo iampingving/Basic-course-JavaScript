@@ -310,8 +310,7 @@ function createChessboard() {
     mainField.appendChild(chessBoard);
 }
 
-function goodInBasketDOM()
-{
+function goodInBasketDOM() {
     const basket = {
         items: [{
                 id: 1,
@@ -353,11 +352,53 @@ function goodInBasketDOM()
     }
     let mainField = document.querySelector('#block-dom');
     mainField.innerHTML = '';
-    if (basket.items.length>0)
-    {
-        mainField.innerText = "В корзине " + basket.items.length + " товаров на сумму "+basket.countSum()+" рублей.";
-    }
-    else {
+    
+    let itemWrap = document.createElement('div');
+    itemWrap.style.display="flex";
+    itemWrap.style.flexDirection="row";
+    itemWrap.style.justifyContent="safe space-around";
+    itemWrap.style.flexWrap="wrap";
+    itemWrap.style.width="100%";
+    
+    if (basket.items.length > 0) {
+        for (let item in basket.items) {
+            let itemCard=document.createElement('div');          
+
+            itemCard.style.display="flex";
+            itemCard.style.flexDirection="column"
+            itemCard.style.justifyContent = 'center';
+            itemCard.style.alignItems = 'left';
+            itemCard.style.border='3px solid #0951d6';
+            itemCard.style.padding='20px';
+            itemCard.style.margin='5px';
+            itemCard.style.width="30%"
+            let itemName = document.createElement('span');
+            itemName.innerText=basket.items[item].name;
+            let itemID = document.createElement('span');
+            itemID.innerText="Артикул: "+ basket.items[item].id;
+            let itemAmount = document.createElement('span');
+            itemAmount.innerText="Кол-во: "+ basket.items[item].amount;
+            let itemPriceOne = document.createElement('span');
+            itemPriceOne.innerText="Цена (за 1 ед.): "+ basket.items[item].price;
+            let itemPrice = document.createElement('span');
+            itemPrice.innerText="Всего на: "+ basket.items[item].amount*basket.items[item].price;
+
+            
+            itemCard.appendChild(itemName);
+            itemCard.appendChild(itemID);
+            itemCard.appendChild(itemAmount);
+            itemCard.appendChild(itemPriceOne);
+            itemCard.appendChild(itemPrice);
+
+
+            itemWrap.appendChild(itemCard);
+        }
+        mainField.appendChild(itemWrap);
+        let sumPrice = document.createElement('span');
+        sumPrice.innerText="В корзине " + basket.items.length + " товаров на сумму " + basket.countSum() + " рублей.";
+        mainField.appendChild(sumPrice);
+        //mainField.innerText += "В корзине " + basket.items.length + " товаров на сумму " + basket.countSum() + " рублей.";
+    } else {
         mainField.innerText = "Корзина пуста";
     }
 }

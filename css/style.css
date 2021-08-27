@@ -12,7 +12,7 @@
 .container {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: ". . header" "block-1 dom-1 dom-1" "block-2 dom-1 dom-1" "block-3 dom-1 dom-1" "block-4 dom-1 dom-1";
+      grid-template-areas: ". . header" "block-1 dom-1 dom-1" "block-2 dom-1 dom-1" "block-3 dom-1 dom-1" "block-4 dom-1 dom-1" "block-5 dom-1 dom-1";
   -ms-grid-columns: 1fr 1fr fit-content(30%);
       grid-template-columns: 1fr 1fr fit-content(30%);
   max-width: 1140px;
@@ -100,9 +100,15 @@
   grid-area: block-4;
 }
 
+.block-5 {
+  -ms-grid-row: 6;
+  -ms-grid-column: 1;
+  grid-area: block-5;
+}
+
 .block-dom {
   -ms-grid-row: 2;
-  -ms-grid-row-span: 4;
+  -ms-grid-row-span: 5;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-area: dom-1;
@@ -118,5 +124,39 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+}
+
+.basket__wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-Content: safe space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.basket__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  border: 3px solid #0951d6;
+  padding: 20px;
+  margin: 5px;
+  width: 30%;
 }
 /*# sourceMappingURL=style.css.map */

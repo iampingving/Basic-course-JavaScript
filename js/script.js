@@ -1,3 +1,5 @@
+"use strict"
+
 function celsiusToFahrenheit() {
     var tCelsius;
     tCelsius = parseFloat(prompt("Введите температуру в градусах Цельсия"));
@@ -244,7 +246,7 @@ function goodsInBasketObj() {
 
         countSum() {
             let summ = 0;
-            for (let item in this.items) {                
+            for (let item in this.items) {
                 summ += this.items[item].amount * this.items[item].price;
             }
             return summ;
@@ -252,4 +254,138 @@ function goodsInBasketObj() {
     }
 
     alert(basket.countSum());
+}
+
+function createChessboard() {
+    let mainField = document.querySelector('#block-dom');
+    mainField.innerHTML = '';
+    let chessBoard = document.createElement('div');
+    let arrLetter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+
+    chessBoard.style.display = 'grid';
+    chessBoard.style.width = 'fit-content';
+    chessBoard.style.border = '1px solid #0951d6';
+    chessBoard.style.gridTemplateColumns = '20px repeat(8, 50px) 20px';
+    chessBoard.style.gridTemplateRows = '20px repeat(8, 50px) 20px';
+
+    for (let i = 0; i <= 9; i++) {
+        for (let j = 0; j <= 9; j++) {
+            let border = document.createElement('div');
+            border.style.width = '100%';
+            border.style.display = 'flex';
+            border.style.justifyContent = 'center';
+            border.style.alignItems = 'center';
+
+            let cell = document.createElement('div');
+            cell.style.width = '100%';
+            cell.style.outline = '1px solid #0951d6'
+
+            if (i === 0) {
+                border.style.transform = 'rotate(180deg)';
+                if (j != 0 && j != 9)
+                    border.innerText = arrLetter[j - 1]
+                chessBoard.appendChild(border);
+            } else if (i === 9) {
+                if (j != 0 && j != 9)
+                    border.innerText = arrLetter[j - 1]
+                chessBoard.appendChild(border);
+            } else {
+                if (j == 0 || j == 9) {
+                    border.innerText = i;
+                    if (j == 9) {
+                        border.style.transform = 'rotate(180deg)';
+                    }
+                    chessBoard.appendChild(border);
+                } else {
+                    if (i % 2 === j % 2) {
+                        cell.style.backgroundColor = '#0951d6';
+                    } else {
+                        cell.style.backgroundColor = 'white';
+                    }
+                    chessBoard.appendChild(cell);
+                }
+            }
+        }
+    }
+    mainField.appendChild(chessBoard);
+}
+
+function goodInBasketDOM() {
+    const basket = {
+        items: [{
+                id: 1,
+                name: "Футболка",
+                amount: 6,
+                price: 999
+            },
+            {
+                id: 2,
+                name: "Шорты",
+                amount: 2,
+                price: 1199
+            },
+            {
+                id: 3,
+                name: "Юбка",
+                amount: 2,
+                price: 1599
+            }, {
+                id: 4,
+                name: "Носки",
+                amount: 5,
+                price: 149
+            }, {
+                id: 5,
+                name: "Джинсы",
+                amount: 2,
+                price: 2199
+            }
+        ],
+
+        countSum() {
+            let summ = 0;
+            for (let item in this.items) {
+                summ += this.items[item].amount * this.items[item].price;
+            }
+            return summ;
+        },
+
+        countAmount() {
+            let summ = 0;
+            for (let item in this.items) {
+                summ += this.items[item].amount;
+            }
+            return summ;
+        },
+
+        render() {
+            let mainField = document.querySelector('#block-dom');
+            mainField.innerHTML = '';
+
+            let itemWrap = document.createElement('div');
+            itemWrap.classList.add("basket__wrap");
+
+            if (this.items.length > 0) {
+                for (let item in this.items) {
+                    let cardDesc = `
+            <div class="basket__item">
+            <span>${this.items[item].name}</span>
+            <span>Артикул: ${this.items[item].id}</span>
+            <span>Кол-во: ${this.items[item].amount}</span>
+            <span>Цена: ${this.items[item].price}</span>
+            <span>Итого: ${this.items[item].amount * basket.items[item].price}</span>
+            <div>
+            `
+                    itemWrap.insertAdjacentHTML('beforeend', cardDesc);
+                }
+                mainField.appendChild(itemWrap);
+                let sumPrice = document.createElement('span');
+                sumPrice.innerText = `В корзине ${ this.countAmount() } товаров на сумму ${this.countSum()} рублей.`;
+                mainField.appendChild(sumPrice);
+            } else {
+                mainField.innerText = "Корзина пуста";
+            }
+        }
+    }
+    basket.render();
 }

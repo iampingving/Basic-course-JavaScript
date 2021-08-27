@@ -348,57 +348,44 @@ function goodInBasketDOM() {
                 summ += this.items[item].amount * this.items[item].price;
             }
             return summ;
+        },
+
+        countAmount() {
+            let summ = 0;
+            for (let item in this.items) {
+                summ += this.items[item].amount;
+            }
+            return summ;
+        },
+
+        render() {
+            let mainField = document.querySelector('#block-dom');
+            mainField.innerHTML = '';
+
+            let itemWrap = document.createElement('div');
+            itemWrap.classList.add("basket__wrap");
+
+            if (this.items.length > 0) {
+                for (let item in this.items) {
+                    let cardDesc = `
+            <div class="basket__item">
+            <span>${this.items[item].name}</span>
+            <span>Артикул: ${this.items[item].id}</span>
+            <span>Кол-во: ${this.items[item].amount}</span>
+            <span>Цена: ${this.items[item].price}</span>
+            <span>Итого: ${this.items[item].amount * basket.items[item].price}</span>
+            <div>
+            `
+                    itemWrap.insertAdjacentHTML('beforeend', cardDesc);
+                }
+                mainField.appendChild(itemWrap);
+                let sumPrice = document.createElement('span');
+                sumPrice.innerText = `В корзине ${ this.countAmount() } товаров на сумму ${this.countSum()} рублей.`;
+                mainField.appendChild(sumPrice);
+            } else {
+                mainField.innerText = "Корзина пуста";
+            }
         }
     }
-    let mainField = document.querySelector('#block-dom');
-    mainField.innerHTML = '';
-    
-    let itemWrap = document.createElement('div');
-    itemWrap.style.display="flex";
-    itemWrap.style.flexDirection="row";
-    itemWrap.style.justifyContent="safe space-around";
-    itemWrap.style.flexWrap="wrap";
-    itemWrap.style.width="100%";
-    
-    if (basket.items.length > 0) {
-        for (let item in basket.items) {
-            let itemCard=document.createElement('div');          
-
-            itemCard.style.display="flex";
-            itemCard.style.flexDirection="column"
-            itemCard.style.justifyContent = 'center';
-            itemCard.style.alignItems = 'left';
-            itemCard.style.border='3px solid #0951d6';
-            itemCard.style.padding='20px';
-            itemCard.style.margin='5px';
-            itemCard.style.width="30%"
-            let itemName = document.createElement('span');
-            itemName.innerText=basket.items[item].name;
-            let itemID = document.createElement('span');
-            itemID.innerText="Артикул: "+ basket.items[item].id;
-            let itemAmount = document.createElement('span');
-            itemAmount.innerText="Кол-во: "+ basket.items[item].amount;
-            let itemPriceOne = document.createElement('span');
-            itemPriceOne.innerText="Цена (за 1 ед.): "+ basket.items[item].price;
-            let itemPrice = document.createElement('span');
-            itemPrice.innerText="Всего на: "+ basket.items[item].amount*basket.items[item].price;
-
-            
-            itemCard.appendChild(itemName);
-            itemCard.appendChild(itemID);
-            itemCard.appendChild(itemAmount);
-            itemCard.appendChild(itemPriceOne);
-            itemCard.appendChild(itemPrice);
-
-
-            itemWrap.appendChild(itemCard);
-        }
-        mainField.appendChild(itemWrap);
-        let sumPrice = document.createElement('span');
-        sumPrice.innerText="В корзине " + basket.items.length + " товаров на сумму " + basket.countSum() + " рублей.";
-        mainField.appendChild(sumPrice);
-        //mainField.innerText += "В корзине " + basket.items.length + " товаров на сумму " + basket.countSum() + " рублей.";
-    } else {
-        mainField.innerText = "Корзина пуста";
-    }
+    basket.render();
 }
